@@ -6,6 +6,7 @@ struct arvore{
 
 typedef struct arvore Arvore;
 
-Arvore* insere(Arvore* a);
+Arvore* insere(Arvore* a, int);
 void imprime(Arvore* a);
+void menu();
 
