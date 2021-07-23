@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arvoreBinaria.h"
+#define tam 30
 
 Arvore* insere(Arvore* a, int n){
     Arvore* novo = (Arvore*)malloc(sizeof(Arvore));
@@ -47,6 +48,49 @@ void imprime (Arvore* a) {
     imprime(a->esquerda);
 }
 
+void criarLinhaSuperior(int tamx){//Criar linhas duplas em cima do Menu
+    int i;
+    printf("%c",201);
+    for(i = 0;i<tam;i++){
+        printf("%c",205);
+    }
+    printf("%c\n",187);
+}
+
+void criarLinhaRodape(int tamx){//Criar linhas duplas em baixo do Menu
+    int i;
+    printf("%c",200);
+    for(i = 0;i<tamx;i++){
+        printf("%c",205);
+    }
+    printf("%c\n",188);
+}
+
+void CriarMenu(int tamx,char str[]){//Criar linhas duplas nas laterais do Menu
+   int i,contador=0;
+   for(i = 0;i<tamx;i++){
+       if(str[i] == '\0')
+       break;
+       else
+          contador++;
+       }
+    printf("%c",186);
+        printf("%s",str);
+     while(contador<tamx){
+         printf("%c",32);
+         contador++;
+     }
+    
+    printf("%c\n",186);
+}
+
 void menu(){
-    printf("\nMENU ARVORE\n 0 - Sair\n 1 - Insere na Folha\n 2 - Remove na folha\n 3 - Imprime\n");
+   system("color F0");//Define a cor do terminal (4->Fundo e 0->Cor das letras)
+   criarLinhaSuperior(tam);
+   CriarMenu(tam,"MENU ARVORE");
+   CriarMenu(tam,"0 - Sair");
+   CriarMenu(tam,"1 - Insere na Folha");
+   CriarMenu(tam,"2 - Remove na folha");
+   CriarMenu(tam,"3 - Imprime");
+   criarLinhaRodape(tam);
 }
