@@ -39,6 +39,30 @@ Arvore* insere(Arvore* a, int n){
 return a;
 }
 
+void busca(Arvore* a, int n){
+     if(a == NULL){
+         printf("\nA árvore está vazia!\n");
+         return;
+     }
+     Arvore *aux = a;
+     while (aux != NULL)
+     {
+         if( n == aux->valor){
+             printf("\nElemento %d encontrado na Árvore!\n\n",aux->valor);
+             return 1;
+         }
+         else{
+             if(n > aux->valor)
+             aux = aux->direita;
+             else if(n < aux->valor)
+             aux = aux->esquerda;
+
+         }
+        
+     }
+     printf("\nElemento não encontrado\n\n");
+}
+
 void imprime (Arvore* a) { 
     if (a == NULL) 
     return a;
@@ -90,7 +114,8 @@ void menu(){
    CriarMenu(tam,"MENU ARVORE");
    CriarMenu(tam,"0 - Sair");
    CriarMenu(tam,"1 - Insere na Folha");
-   CriarMenu(tam,"2 - Remove na folha");
-   CriarMenu(tam,"3 - Imprime");
+   CriarMenu(tam,"2 - Remove na Folha");
+   CriarMenu(tam,"3 - Busca na Folha");
+   CriarMenu(tam,"4 - Imprime");
    criarLinhaRodape(tam);
 }

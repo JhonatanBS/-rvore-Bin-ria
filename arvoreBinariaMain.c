@@ -4,7 +4,7 @@
 
 int main(){
     Arvore* A = NULL;
-    int opcao, numero;
+    int opcao, numero, b;
 
   do{
         menu();
@@ -24,8 +24,13 @@ int main(){
 
                      break; 
              case 3:
-                 imprime(A);
-                     break;               
+                 printf("Digite um valor para a busca na Arvore:");
+                 scanf("%d",&numero);
+                 busca(A,numero);
+                     break;
+             case 4:
+                 imprime(A); 
+                     break;                     
         }
     }while(opcao != 0);
 
