@@ -21,7 +21,9 @@ int main(){
                  A = insere(A,numero); 
                      break;
              case 2:
-
+                 printf("Digite um valor para remover da Arvore:");
+                 scanf("%d",&numero);
+                 A = remover(A,numero);
                      break; 
              case 3:
                  printf("Digite um valor para a busca na Arvore:");

@@ -7,6 +7,7 @@ struct arvore{
 typedef struct arvore Arvore;
 
 Arvore* insere(Arvore* a, int);
+Arvore* remover(Arvore* a, int);
 void busca(Arvore* a, int);
 void imprime(Arvore* a);
 //Funções protótipas para o menu

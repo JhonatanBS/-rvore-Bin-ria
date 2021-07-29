@@ -38,6 +38,61 @@ Arvore* insere(Arvore* a, int n){
     }
 return a;
 }
+//Função que remove uma folha na árvore
+Arvore* remover(Arvore* a, int n){
+     if(a == NULL){//Se o ponteiro a for nulo, a árvore está vazia
+         printf("\nÁrvore Vazia!\n");
+         return a;
+                                 }
+     //Ponteiros auxiliares do tipo struct
+     Arvore* atual = a, *ant = NULL;
+     //Estrutura que percorre a árvore
+         while(atual != NULL && atual->valor != n){//While é falso quando o número é encontrado
+             ant = atual;
+         if(n > atual->valor)
+          atual = atual->direita;//Percorre à direita
+         else
+          atual = atual->esquerda;//Percorre à esquerda  
+                                                  }
+     //O elemento percorreu todas folhas e não foi encontrado
+     if(atual == NULL){
+       printf("Elemento não encontrado!");
+       return a;
+                      }
+     //Quando o galho não tem folhas
+     if(atual->direita == NULL && atual->esquerda == NULL){
+         if(n > ant->valor){
+             ant->direita = atual->direita;
+                 free(atual);}
+         else{
+             ant->esquerda = atual->esquerda;
+                 free(atual);
+             }
+                                                          }
+     //Quando o galho tem apenas uma folha
+     else if(atual->direita != NULL && atual->esquerda == NULL || atual->direita == NULL && atual->esquerda != NULL){
+         if(n > ant->valor){
+             ant->direita = atual->direita;
+                 free(atual);}
+         else{
+             ant->esquerda = atual->esquerda;
+                 free(atual);
+             }
+     //Quando o galho tem duas folhas    
+     }else if(atual->esquerda != NULL && atual->direita != NULL){
+         //Percorre a àrvore a direita
+         while(atual->direita != NULL){
+             ant = atual;//Recebe a posição atual da árvore
+             atual = atual->direita;//Recebe a próxima a posição
+             ant->valor = atual->valor;//O valor atual recebe o próximo valor, e vai realiza cópia
+       }
+         if(atual->direita == NULL)
+             ant->direita = atual->direita;
+
+                 free(atual);
+                                                                }
+   return a;
+}
 
 void busca(Arvore* a, int n){
      if(a == NULL){
@@ -49,7 +104,7 @@ void busca(Arvore* a, int n){
      {
          if( n == aux->valor){
              printf("\nElemento %d encontrado na Árvore!\n\n",aux->valor);
-             return 1;
+             return;
          }
          else{
              if(n > aux->valor)
