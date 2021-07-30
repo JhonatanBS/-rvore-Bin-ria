@@ -101,21 +101,16 @@ void busca(Arvore* a, int n){
          return;
      }
      Arvore *aux = a;
-     while (aux != NULL)
-     {
-         if( n == aux->valor){
+     while (aux != NULL){
+         if(n > aux->valor)
+             aux = aux->direita;
+         else if(n < aux->valor)
+             aux = aux->esquerda;
+         else{ 
              printf("\nElemento %d encontrado na Árvore!\n\n",aux->valor);
              return;
-         }
-         else{
-             if(n > aux->valor)
-             aux = aux->direita;
-             else if(n < aux->valor)
-             aux = aux->esquerda;
-
-         }
-        
-     }
+             }
+                        }
      printf("\nElemento não encontrado\n\n");
 }
 
