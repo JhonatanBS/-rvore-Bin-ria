@@ -31,15 +31,12 @@ int main(){
                  busca(A,numero);
                      break;
              case 4:
-                 imprime(A); 
-                     break;
-             case 5:
                  preOrdem(A); 
                      break;
-             case 6:
+             case 5:
                  emOrdem(A); 
                      break;
-             case 7:
+             case 6:
                  posOrdem(A); 
                      break;                          
         }

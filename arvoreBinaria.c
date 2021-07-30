@@ -13,9 +13,10 @@ Arvore* insere(Arvore* a, int n){
     novo->valor = n;
     novo->direita = NULL;
     novo->esquerda = NULL;
-
+    //Inserção na raiz,quando a árvore estiver vazia
     if(a == NULL){
         a = novo;
+    //Senão estiver vazia, inserçao das sub-árvores    
     }else{
         Arvore* atual = a, *ant = NULL;
         while(atual != NULL){
@@ -143,15 +144,6 @@ void posOrdem(Arvore* a){
      } 
 }
 
-void imprime (Arvore* a) { 
-    if (a == NULL) 
-    return a;
-
-    printf("%d\n", a->valor); 
-    imprime(a->direita);
-    imprime(a->esquerda);
-}
-
 void criarLinhaSuperior(int tamx){//Criar linhas duplas em cima do Menu
     int i;
     printf("%c",201);
@@ -197,9 +189,8 @@ void menu(){
    CriarMenu(tam,"1 - Insere na Folha");
    CriarMenu(tam,"2 - Remove na Folha");
    CriarMenu(tam,"3 - Busca na Folha");
-   CriarMenu(tam,"4 - Imprime");
-   CriarMenu(tam,"5 - Pre-Ordem");
-   CriarMenu(tam,"6 - Em-Ordem");
-   CriarMenu(tam,"7 - Pos-Ordem");
+   CriarMenu(tam,"4 - Pre-Ordem");
+   CriarMenu(tam,"5 - Em-Ordem");
+   CriarMenu(tam,"6 - Pos-Ordem");
    criarLinhaRodape(tam);
 }
