@@ -32,7 +32,16 @@ int main(){
                      break;
              case 4:
                  imprime(A); 
-                     break;                     
+                     break;
+             case 5:
+                 preOrdem(A); 
+                     break;
+             case 6:
+                 emOrdem(A); 
+                     break;
+             case 7:
+                 posOrdem(A); 
+                     break;                          
         }
     }while(opcao != 0);
 

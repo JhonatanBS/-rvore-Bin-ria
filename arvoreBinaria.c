@@ -118,6 +118,31 @@ void busca(Arvore* a, int n){
      printf("\nElemento não encontrado\n\n");
 }
 
+void preOrdem(Arvore* a){
+     if(a != NULL){
+         printf("%d ",a->valor);
+         preOrdem(a->direita);
+         preOrdem(a->esquerda);
+     }
+     
+}
+
+void emOrdem(Arvore* a){
+     if(a != NULL){
+         emOrdem(a->direita);
+         printf("%d ",a->valor);
+         emOrdem(a->esquerda);
+     } 
+}
+
+void posOrdem(Arvore* a){
+     if(a != NULL){
+         posOrdem(a->direita);
+         posOrdem(a->esquerda);
+         printf("%d ",a->valor);
+     } 
+}
+
 void imprime (Arvore* a) { 
     if (a == NULL) 
     return a;
@@ -165,6 +190,7 @@ void CriarMenu(int tamx,char str[]){//Criar linhas duplas nas laterais do Menu
 
 void menu(){
    system("color F0");//Define a cor do terminal (4->Fundo e 0->Cor das letras)
+   printf("\n");
    criarLinhaSuperior(tam);
    CriarMenu(tam,"MENU ARVORE");
    CriarMenu(tam,"0 - Sair");
@@ -172,5 +198,8 @@ void menu(){
    CriarMenu(tam,"2 - Remove na Folha");
    CriarMenu(tam,"3 - Busca na Folha");
    CriarMenu(tam,"4 - Imprime");
+   CriarMenu(tam,"5 - Pre-Ordem");
+   CriarMenu(tam,"6 - Em-Ordem");
+   CriarMenu(tam,"7 - Pos-Ordem");
    criarLinhaRodape(tam);
 }

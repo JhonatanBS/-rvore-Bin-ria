@@ -9,6 +9,9 @@ typedef struct arvore Arvore;
 Arvore* insere(Arvore* a, int);
 Arvore* remover(Arvore* a, int);
 void busca(Arvore* a, int);
+void preOrdem(Arvore* a);
+void emOrdem(Arvore* a);
+void posOrdem(Arvore* a);
 void imprime(Arvore* a);
 //Funções protótipas para o menu
 void menu();
