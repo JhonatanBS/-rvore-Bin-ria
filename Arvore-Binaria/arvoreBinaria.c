@@ -45,54 +45,42 @@ Arvore* remover(Arvore* a, int n){
          printf("\nÁrvore Vazia!\n");
          return a;
                                  }
-     //Ponteiros auxiliares do tipo struct
-     Arvore* atual = a, *ant = NULL;
-     //Estrutura que percorre a árvore
-         while(atual != NULL && atual->valor != n){//While é falso quando o número é encontrado
-             ant = atual;
-         if(n > atual->valor)
-          atual = atual->direita;//Percorre à direita
-         else
-          atual = atual->esquerda;//Percorre à esquerda  
-                                                  }
-     //O elemento percorreu todas folhas e não foi encontrado
-     if(atual == NULL){
-       printf("Elemento não encontrado!");
-       return a;
-                      }
-     //Quando o galho não tem folhas
-     if(atual->direita == NULL && atual->esquerda == NULL){
-         if(n > ant->valor){
-             ant->direita = atual->direita;
-                 free(atual);}
-         else{
-             ant->esquerda = atual->esquerda;
-                 free(atual);
-             }
-                                                          }
-     //Quando o galho tem apenas uma folha
-     else if(atual->direita != NULL && atual->esquerda == NULL || atual->direita == NULL && atual->esquerda != NULL){
-         if(n > ant->valor){
-             ant->direita = atual->direita;
-                 free(atual);}
-         else{
-             ant->esquerda = atual->esquerda;
-                 free(atual);
-             }
-     //Quando o galho tem duas folhas    
-     }else if(atual->esquerda != NULL && atual->direita != NULL){
-         //Percorre a àrvore a direita
-         while(atual->direita != NULL){
-             ant = atual;//Recebe a posição atual da árvore
-             atual = atual->direita;//Recebe a próxima a posição
-             ant->valor = atual->valor;//O valor atual recebe o próximo valor, e vai realiza cópia
-       }
-         if(atual->direita == NULL)
-             ant->direita = atual->direita;
-
-                 free(atual);
-                                                                }
-   return a;
+     else {
+        if(a->valor == n) {
+            // remove nós folhas (nós sem filhos)
+            if(a->esquerda == NULL && a->direita == NULL) {
+                free(a);
+                return NULL;
+            }
+            else{
+                // remover nós que possuem apenas 1 filho
+                if(a->esquerda == NULL || a->direita == NULL){
+                    Arvore *aux;
+                    if(a->esquerda != NULL)
+                        aux = a->esquerda;
+                    else
+                        aux = a->direita;
+                    free(a);
+                    return aux;
+                }
+                else{
+                    Arvore *aux = a->esquerda;
+                    while(aux->direita != NULL)
+                        aux = aux->direita;
+                    a->valor = aux->valor;
+                    aux->valor = n;
+                    a->esquerda = remover(a->esquerda, n);
+                    return a;
+                }
+            }
+        } else {
+            if(n < a->valor)
+                a->esquerda = remover(a->esquerda, n);
+            else
+                a->direita = remover(a->direita, n);
+            return a;
+        }
+    }
 }
 
 void busca(Arvore* a, int n){
@@ -138,6 +126,13 @@ void posOrdem(Arvore* a){
          posOrdem(a->direita);
          printf("%d ",a->valor);
      } 
+}
+
+int tamanho(Arvore* a){
+   if( a == NULL)
+     return 0;
+   else
+     return 1 + tamanho(a->esquerda) + tamanho(a->direita); 
 }
 
 void criarLinhaSuperior(int tamx){//Criar linhas duplas em cima do Menu
@@ -188,5 +183,6 @@ void menu(){
    CriarMenu(tam,"4 - Pre-Ordem");
    CriarMenu(tam,"5 - Em-Ordem");
    CriarMenu(tam,"6 - Pos-Ordem");
+   CriarMenu(tam,"7 - Tamanho da Arvore");
    criarLinhaRodape(tam);
 }

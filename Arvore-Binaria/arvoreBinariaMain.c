@@ -38,7 +38,11 @@ int main(){
                      break;
              case 6:
                  posOrdem(A); 
-                     break;                          
+                     break;
+             case 7:
+                 numero = tamanho(A);
+                 printf("O tamanho da Arvore eh %d",numero); 
+                     break;                                  
         }
     }while(opcao != 0);
 

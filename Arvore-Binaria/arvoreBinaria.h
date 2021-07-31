@@ -13,6 +13,7 @@ void busca(Arvore* a, int);
 void preOrdem(Arvore* a);
 void emOrdem(Arvore* a);
 void posOrdem(Arvore* a);
+int tamanho(Arvore* a);
 
 //Funções protótipas para o menu
 void menu();
