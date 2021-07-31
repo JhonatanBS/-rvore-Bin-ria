@@ -117,24 +117,25 @@ void busca(Arvore* a, int n){
 void preOrdem(Arvore* a){
      if(a != NULL){
          printf("%d ",a->valor);
-         preOrdem(a->direita);
          preOrdem(a->esquerda);
+         preOrdem(a->direita);
+         
      }
      
 }
 
 void emOrdem(Arvore* a){
      if(a != NULL){
-         emOrdem(a->direita);
-         printf("%d ",a->valor);
          emOrdem(a->esquerda);
+         printf("%d ",a->valor);
+         emOrdem(a->direita);
      } 
 }
 
 void posOrdem(Arvore* a){
      if(a != NULL){
-         posOrdem(a->direita);
          posOrdem(a->esquerda);
+         posOrdem(a->direita);
          printf("%d ",a->valor);
      } 
 }
