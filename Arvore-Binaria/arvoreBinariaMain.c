@@ -41,7 +41,7 @@ int main(){
                      break;
              case 7:
                  numero = tamanho(A);
-                 printf("O tamanho da Arvore eh %d",numero); 
+                 printf("\nO tamanho da Arvore eh %d\n",numero); 
                      break;                                  
         }
     }while(opcao != 0);
