@@ -10,8 +10,8 @@ As três principais operações:
 
 Vejo o exemplo a seguir:
 
- ![arvore binaria](http://www.desafiosdeti.com.br/wp-content/uploads/2017/02/arv1.png)
-
+ ![arvore binaria](https://github.com/JhonatanBS/Arvore/blob/master/images/arvoreBinaria.jpg)
+     
 >**Observação**: Neste código, a implementação da árvore binária é feita de forma dinâmica. Aonde utilizamos um **malloc** para alocação de memória e todo o código é controlado através de ponteiros nas funções, ponteiros auxiliares e ponteiros para apontar para direita e para esquerda.
 
  ## *Inserção*
