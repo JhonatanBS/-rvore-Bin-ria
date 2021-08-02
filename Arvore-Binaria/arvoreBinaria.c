@@ -42,64 +42,68 @@ return a;//retorna o ponteiro
 }
 //Função que remove uma folha na árvore
 Arvore* remover(Arvore* a, int n){
-     if(a == NULL){//Se o ponteiro a for nulo, a árvore está vazia
+     if(a == NULL){// Se o ponteiro foi nulo, á arvore esta vazia
          printf("\nÁrvore Vazia!\n");
          return a;
                                  }
-     else {
+     else {//Senão
+        // Se o valor digitado pelo usuário for igual ao elemento atual
         if(a->valor == n) {
-            // remove nós folhas (nós sem filhos)
+            // remove o nó ou a subárvore que não possui filhos ou folhas
             if(a->esquerda == NULL && a->direita == NULL) {
-                free(a);
-                return NULL;
+                free(a);//Libera o nó
+                return NULL;//retorna NULL para o nó anterior
             }
-            else{
-                // remover nós que possuem apenas 1 filho
+            else{//Senão
+                // remove o nó ou a subárvore que  possui um filho ou uma folha
                 if(a->esquerda == NULL || a->direita == NULL){
-                    Arvore *aux;
+                    Arvore *aux;//Ponteiro auxiliar
                     if(a->esquerda != NULL)
-                        aux = a->esquerda;
-                    else
-                        aux = a->direita;
-                    free(a);
-                    return aux;
+                        aux = a->esquerda;// Faz aux percorre a esquerda
+                    else//Senão
+                        aux = a->direita;// Faz aux percorre a direita
+                    free(a);// Libera o nó atual
+                    return aux;//Retorna aux para o nó anterior
                 }
                 else{
+                    //Remove o nó ou subárvore que tem dois filhos ou duas folhas
                     Arvore *aux = a->esquerda;
                     while(aux->direita != NULL)
-                        aux = aux->direita;
-                    a->valor = aux->valor;
-                    aux->valor = n;
-                    a->esquerda = remover(a->esquerda, n);
-                    return a;
+                        aux = aux->direita;//Avança para direita do nó
+                    a->valor = aux->valor;// o nó atual recebe o valor do ultomo nó a esquerda
+                    aux->valor = n;//Guarda o valor escolhido para remover
+                    a->esquerda = remover(a->esquerda, n);//remove o nó na subárvore a esquerda
+                    return a;//Retorna o ponteiro 
                 }
             }
         } else {
+            //Recursividade para percorrer a árvore
             if(n < a->valor)
-                a->esquerda = remover(a->esquerda, n);
+                a->esquerda = remover(a->esquerda, n);//Percorre o nó a esquerda
             else
-                a->direita = remover(a->direita, n);
-            return a;
+                a->direita = remover(a->direita, n);//Percorre o nó a direita
+            return a;//Retorna o ponteiro
         }
     }
 }
-
+//Função que busca um nó na árvore
 void busca(Arvore* a, int n){
-     if(a == NULL){
+     if(a == NULL){//Se o ponteiro for nulo, árvore está vazia
          printf("\nA árvore está vazia!\n");
          return;
      }
-     Arvore *aux = a;
-     while (aux != NULL){
-         if(n > aux->valor)
-             aux = aux->direita;
-         else if(n < aux->valor)
-             aux = aux->esquerda;
-         else{ 
+     Arvore *aux = a;//Ponteiro auxiliar recebendo o inicio da árvore
+     while (aux != NULL){//Percorre a árvore
+         if(n > aux->valor)//Se o valor for maior que atual 
+             aux = aux->direita;//Percorre o nó a direita
+         else if(n < aux->valor)//Se for menor que o atual
+             aux = aux->esquerda;//Percorre o nó a esquerda
+         else{// O elemento é igual ao digitado pelo o usuário 
              printf("\nElemento %d encontrado na Árvore!\n\n",aux->valor);
              return;
              }
-                        }
+                        }//Fim do While
+     //Elemento não encontrado, porque o aux chegou a ser nulo                   
      printf("\nElemento não encontrado\n\n");
 }
 
@@ -107,10 +111,8 @@ void preOrdem(Arvore* a){
      if(a != NULL){
          printf("%d ",a->valor);
          preOrdem(a->esquerda);
-         preOrdem(a->direita);
-         
+         preOrdem(a->direita);    
      }
-     
 }
 
 void emOrdem(Arvore* a){
