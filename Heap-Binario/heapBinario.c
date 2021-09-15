@@ -10,6 +10,9 @@ int* criaVetor(int *v){
 
      v = (int*)calloc(tamanho,sizeof(int));
    
+  /* for(i=1;i<tamanho;i++){
+       v[i]=i;
+   }*/
    return v;
 }
 
@@ -17,14 +20,15 @@ int* insere(int *v,int n){
      if(pos < tamanho)
          v[pos++] = n;
      else if(pos >= tamanho-1)
-         printf("\nFila cheia!!!");  
+         printf("\nFila cheia!!!"); 
+         printf("%d\n",pos); 
  return v;
 }
 
 int* excluir(int *v){
     int copia;
-    copia = v[0];
-    v[0] = v[pos-1];
+    copia = v[1];
+    v[1] = v[pos-1];
     v[pos-1] = copia;
     pos--;
 

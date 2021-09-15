@@ -1,4 +1,4 @@
-int tamanho,pos;//Variáveis globais
+int tamanho,pos=1;//Variáveis globais
 
 int* criaVetor(int *v);
 int* insere(int *v,int);

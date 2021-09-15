@@ -35,10 +35,10 @@ int main(){
              vetor = heapMin(vetor);
                  break;
          case 6:
-             for(i=0;i<pos;i++){
+             for(i=1;i<pos;i++){
                  printf("|%d", vetor[i]);
              }
-             //vetor = imprime(vetor);
+            // vetor = imprime(vetor);
                  break;                                       
       }
     }while(opcao != 0);
