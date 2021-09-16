@@ -141,7 +141,8 @@ void menu(){
    system("color F0");//Define a cor do terminal (4->Fundo e 0->Cor das letras)
    printf("\n");
    criarLinhaSuperior(tam);
-   CriarMenu(tam,"MENU ARVORE");
+   CriarMenu(tam,"HEAP SORT");
+   criaLinhaHorizontal(tam);
    CriarMenu(tam,"0 - Sair");
    CriarMenu(tam,"1 - Cria o vetor");
    CriarMenu(tam,"2 - Insere");
@@ -150,4 +151,55 @@ void menu(){
    CriarMenu(tam,"5 - Heap Minimo");
    CriarMenu(tam,"6 - Imprime");
    criarLinhaRodape(tam);
+}
+
+void criaLinhaHorizontal(int tamx){
+    int i;
+    printf("%c", 204);
+    for(i=0;i<tamx;i++){
+        printf("%c", 205);
+    }
+    printf("%c\n", 185);
+}
+
+void imprimeVetor(int x,int *v){
+    vetorSuperior(x*3);
+    printf("%c",186);
+    printf("  ");
+    printf(" %c",186);
+    for(int i=1;i<x;i++){
+             printf(" %d",v[i]);
+             printf(" %c",186);    
+ }
+    printf("\n");
+    vetorRodape(x*3);
+ 
+}
+
+void vetorSuperior(int tamx){//Criar linhas duplas em cima do Menu
+    int i,j=1;
+    int tres = 3;
+    printf("%c",201);
+    for(i = 0;i<tamx;i++){
+        if(i == j*tres && i != 0){
+            printf("%c",203);
+            j++;
+        }
+        printf("%c",205);
+    }
+    printf("%c\n",187);
+}
+
+void vetorRodape(int tamx){//Criar linhas duplas em baixo do Menu
+    int i,j=1;
+    int tres = 3;
+    printf("%c",200);
+    for(i = 0;i<tamx;i++){
+        if(i == j*tres && i != 0){
+            printf("%c",202);
+            j++;
+        }
+        printf("%c",205);
+    }
+    printf("%c\n",188);
 }
